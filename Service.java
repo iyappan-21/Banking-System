@@ -4,7 +4,7 @@ public class Service {
 
     HashMap<Integer,User> users=new HashMap<>();
 
-    HashMap<Integer,Account> accounts=new HashMap<>();
+    HashMap<String,Account> accounts=new HashMap<>();
     
 
 
@@ -27,11 +27,85 @@ public class Service {
 
         System.out.println("REGISTRATION SUCCESSFUL!\n" +
                 "----------------------------------------------\n" +
-                "Account Holder  : " + name + "\n" +
+                "User Name       : " + name + "\n" +
+                "User Id         :"  +u.getId()+"\n"+
                 "Email Registered: " + email + "\n" +
                 "Ph Number       : " + ph +"\n" +
                 "----------------------------------------------");
 
     }
+
+    public boolean isExist(int user_id){
+        return users.containsKey(user_id);
+    }
+
+
+
+    //method for new bank account gendration
+    public void createAccount(){
+        System.out.println("Enter your User Id: ");
+
+        int u_id=scanner.nextInt();
+        if(isExist(u_id)){
+            User u=users.get(u_id);
+
+            System.out.println("Welcome "+u.getName());
+            System.out.print("====Please Enter the belove details clearly====");
+            System.out.println("-------------------------------------------------------------------");
+
+            System.out.println("Create New PIN for your Bank Account :");
+            long password=scanner.nextLong();
+
+            System.out.println("Confirm PIN :");
+            long cpassword=scanner.nextLong();
+
+            while(!(password==cpassword)){
+                System.out.println("Create New PIN for your Bank Account :");
+                password=scanner.nextLong();
+
+            System.out.println("Confirm PIN :");
+                cpassword=scanner.nextLong();
+
+
+            }
+            System.out.println("PIN Gendrated succesfully");
+
+            System.out.println("Enter your initial balance");
+            float balance=scanner.nextFloat();
+
+            
+
+            String s1=String.format("%04d%02d%05d",u.getId(),u.getCount(),Account.accountcount);
+            Account.accountcount=Account.accountcount++;
+            
+            Account acc=new Account(u.getId(),s1,password,balance);
+            accounts.put(s1,acc);
+
+            System.out.println("New BankAccount created Succesfully ");
+
+            System.out.println("--------------------------------------------------------");
+            System.out.println(
+
+                "Account holder:" +u.getName()+"\n"+
+                "Account Number:" +acc.accountNumber()+"\n"+
+                "Balance       :" +acc.availableBalance()+"\n"
+            
+            );
+
+        }
+
+        else{
+            System.out.println("user did not Exist");
+
+            System.out.println("Register First");
+        
+        }
+
+
+
+
+
+    }
+
     
 }

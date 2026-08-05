@@ -1,22 +1,35 @@
 import java.util.ArrayList;
 public class Account {
-    long account_num;
-    long password;
-    float balance;
-    ArrayList<String> history=new ArrayList<>();
+    private String account_num;
+    private int user_id;
+    private long password;
+    private float balance;
+    private ArrayList<String> history=new ArrayList<>();
 
-    Account(int account_num,long password,float balance){
+    public static long accountcount=1;
+
+    Account(int user_id,String account_num,long password,float balance){
+        this.user_id=user_id;
         this.account_num=account_num;
         this.password=password;
         this.balance=balance;
     }
-    public long accountNumber(){
+    public String accountNumber(){
         return account_num;
     }
 
     public float availableBalance(){
         return balance;
     }
+    public void  trasactionHistory(){
+        for(String s:history){
+            System.out.println("-----------------------------------------------------");
+            System.out.println(s);
+            System.out.println("-----------------------------------------------------");
+        }
+
+    }
+    //account nuber counter
 
     public void deposit(double amount) {
         if (amount > 0) {

@@ -4,6 +4,7 @@ class User{
     private long phone_num;
     private String email;
     public static int idcounter=100;
+    public static int count=1;
 
     
 
@@ -15,6 +16,9 @@ class User{
     }
     void setUserId(){
         user_id=idcounter++;
+    }
+    int getCount(){
+        return count++;
     }
     
 
