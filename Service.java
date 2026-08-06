@@ -76,7 +76,7 @@ public class Service {
             
 
             String s1=String.format("%04d%02d%05d",u.getId(),u.getCount(),Account.accountcount);
-            Account.accountcount=Account.accountcount++;
+            Account.accountcount++;
             
             Account acc=new Account(u.getId(),s1,password,balance);
             accounts.put(s1,acc);
@@ -102,10 +102,49 @@ public class Service {
         }
 
 
+    }
+
+    public void deposite(){
+
+        System.out.println("Enter your Account number: ");
+        String a_num=scanner.next();
+
+        if(!accounts.containsKey(a_num)){
+            System.err.println("there is no account in this Account Number");
+            System.out.println("Please recheck your acccount Number");
+            return;
+        }
+
+        
+        System.out.println("Enter the ammount to deposit: ");
+        double ammount=scanner.nextFloat();
+
+        accounts.get(a_num).deposit(ammount);     
+
+    }
+    public void withdraw(){
+        System.out.println("Enter your Account number: ");
+        String a_num=scanner.next();
+
+        if(!accounts.containsKey(a_num)){
+            System.err.println("there is no account in this Account Number");
+            System.out.println("Please recheck your acccount Number");
+            return;
+        }
+        System.out.println("Enter the ammount to withdrow: ");
+        double amount=scanner.nextFloat();
+
+        accounts.get(a_num).withdraw(amount); 
 
 
 
     }
 
-    
+
+
+
+
 }
+
+    
+

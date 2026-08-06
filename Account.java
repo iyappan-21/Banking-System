@@ -34,7 +34,11 @@ public class Account {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
+            System.err.println("-----------------------------------------------------------------");
             System.out.println("Deposited: " + amount);
+            System.out.println("balance: "+ balance);
+
+            System.err.println("-----------------------------------------------------------------");
         } else {
             System.out.println("Invalid deposit amount.");
         }
@@ -47,7 +51,11 @@ public class Account {
             System.out.println("Insufficient balance! Transaction denied.");
         } else {
             balance -= amount;
+            System.err.println("__________________________________________________________________");
             System.out.println("Withdrew: "+ amount);
+            System.out.println("balance: "+ balance);
+
+            System.err.println("__________________________________________________________________");
         }
     }
 

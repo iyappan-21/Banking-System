@@ -22,6 +22,11 @@ public class BankingSystem {
                     case 2:
                         service.createAccount();
                         break;
+                    case 3:
+                        service.deposite();
+
+                    case 4:
+                        service.withdraw();
                     
                     default:
                         break;
@@ -38,6 +43,8 @@ public class BankingSystem {
         System.out.println("""
             1.register new User
             2.Create new account
+            3.Deposit
+            4.Withdraw
         """);
     }
 
