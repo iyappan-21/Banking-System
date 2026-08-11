@@ -42,6 +42,7 @@ public class Account {
         } else {
             System.out.println("Invalid deposit amount.");
         }
+        history.add(amount+"deposited  Balance"+balance);
     }
 
     public void withdraw(double amount) {
@@ -57,6 +58,9 @@ public class Account {
 
             System.err.println("__________________________________________________________________");
         }
+        history.add(amount+"withdrawed  Balance"+balance);
+
+
     }
 
 

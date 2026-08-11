@@ -28,6 +28,10 @@ public class BankingSystem {
                     case 4:
                         service.withdraw();
                     
+                    case  5:
+                        service.monyTransfer();
+                        
+                    
                     default:
                         break;
                 }
@@ -45,10 +49,12 @@ public class BankingSystem {
             2.Create new account
             3.Deposit
             4.Withdraw
+            5.Transaction
         """);
     }
 
 }
+
 
 
 

@@ -139,6 +139,52 @@ public class Service {
 
 
     }
+    void monyTransfer(){
+        System.out.println("Enter your Account number");
+        String a_num=scanner.next();
+        if(!accounts.containsKey(a_num)){
+            System.out.println("""
+            there is no Account in this Account nUmber
+
+            Try Again with correct account Number
+        """);
+            return;
+
+        }
+        System.out.println("Enter the recivers Account number");
+        String r_num=scanner.next();
+
+         if(!accounts.containsKey(a_num)){
+            System.out.println("""
+            there is no Account in this Account nUmber
+
+            Try Again with correct account Number
+        """);
+            return;
+
+        }
+
+        System.out.println("Enter the ammount to transfer");
+        double amount=scanner.nextDouble();
+        //geting recivers account using account number
+        Account reciver=accounts.get(r_num);
+        //senders account
+        Account sender=accounts.get(a_num);
+
+        //cheking sender's balance if have suficient balance move further
+        if(sender.availableBalance()>=amount){
+            reciver.deposit(amount);
+            sender.withdraw(amount);
+
+            System.out.println("Transaction Success" + "\n"+
+            
+            amount+"tranfered from"+a_num+"to"+r_num+"");
+
+        }
+        
+
+
+    }
 
 
 
